@@ -103,7 +103,7 @@ export default function Footer() {
         <div className="pt-space-lg border-t border-outline-variant/30 flex flex-col md:flex-row items-center justify-between gap-space-md">
           <p className="font-body-sm text-body-sm text-on-surface-variant">
             © 2026 AuditShield AI, Inc. Enterprise Grade Zero-Trust Assurance.
-            All rights reserved.
+            All rights reserved by KINZA.
           </p>
           <div className="flex items-center gap-space-md">
             {COMPLIANCE_PILLS.map((pill) => (

@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { label: "Pricing", href: "#pricing" },
 ];
 
-const LOGO_SRC = "logo.png";
+const LOGO_SRC = "/logo.png";
 
 export default function Header() {
   const [active, setActive] = useState("#features");
@@ -58,7 +58,7 @@ export default function Header() {
         {/* Actions */}
         <div className="flex items-center gap-space-md">
           <Link
-            href="/sign-in"
+            href="/login"
             className="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface px-space-md py-space-sm rounded-lg transition-colors"
           >
             Sign In

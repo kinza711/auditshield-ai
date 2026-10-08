@@ -10,7 +10,7 @@ import PasswordInput from "./PasswordInput";
 
 const ROLE_OPTIONS: SelectOption[] = [
   { value: "admin", label: "Compliance Officer / Admin" },
-  { value: "employee", label: "Standard Employee" },
+  { value: "employee", label: "Standard Employee / HR" },
   { value: "auditor", label: "External Auditor" },
 ];
 

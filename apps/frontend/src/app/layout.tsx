@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   title: "AuditShield AI - Enterprise Compliance Architecture",
   description:
     "Automated AI document redaction and compliance audit powered by AWS Bedrock guardrails.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({

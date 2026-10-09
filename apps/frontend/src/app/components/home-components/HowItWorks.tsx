@@ -35,30 +35,36 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="w-full p-16 scroll-mt-24">
+    <section
+      id="how-it-works"
+      className="w-full py-10 px-4 sm:py-14 sm:px-6 lg:p-16 scroll-mt-24"
+    >
       <SectionHeading
         eyebrow="Execution Lifecycle"
         title="Three Steps to Deterministic Redaction"
         description="From intake to cryptographically signed export in under 600 milliseconds."
-        className="max-w-2xl mb-14"
+        className="max-w-2xl mb-8 sm:mb-10 lg:mb-14"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-10">
         {STEPS.map((s) => (
           <div
             key={s.badge}
-            className="bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between relative overflow-hidden"
+            className="min-w-0 bg-surface-container-lowest rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between relative overflow-hidden"
           >
             <div>
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between gap-3 mb-4">
                 <span
-                  className={`font-label-lg text-label-lg uppercase tracking-wider px-3 py-1 rounded font-mono font-bold ${s.badgeClass}`}
+                  className={`font-label-lg text-label-lg uppercase tracking-wider px-3 py-1 rounded font-mono font-bold whitespace-nowrap ${s.badgeClass}`}
                 >
                   {s.badge}
                 </span>
-                <Icon name={s.icon} className={`text-[24px] ${s.iconColor}`} />
+                <Icon
+                  name={s.icon}
+                  className={`text-[24px] shrink-0 ${s.iconColor}`}
+                />
               </div>
-              <h3 className="font-headline-md text-headline-md text-on-surface font-bold mb-3">
+              <h3 className="font-headline-md text-headline-md text-on-surface font-bold mb-3 break-words">
                 {s.title}
               </h3>
               <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
@@ -66,7 +72,7 @@ export default function HowItWorks() {
               </p>
             </div>
             <div className="mt-3 pt-3">
-              <span className="font-label-sm text-label-sm text-on-surface-variant font-mono">
+              <span className="font-label-sm text-label-sm text-on-surface-variant font-mono break-words">
                 {s.meta}
               </span>
             </div>

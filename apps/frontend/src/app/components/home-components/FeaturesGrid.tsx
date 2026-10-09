@@ -53,9 +53,12 @@ const FEATURES: Feature[] = [
       "AWS Bedrock powered foundation models understand legal and clinical context, preventing over-redaction while blocking 100% of sensitive leakage in complex tabular structures.",
     footer: (
       <div className="pt-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-surface-container font-label-md text-label-md text-on-surface">
-          <Icon name="neurology" className="text-secondary text-[18px]" />
-          <span className="font-semibold">
+        <div className="inline-flex max-w-full items-start gap-2 px-3.5 py-1.5 rounded-lg bg-surface-container font-label-md text-label-md text-on-surface">
+          <Icon
+            name="neurology"
+            className="text-secondary text-[18px] shrink-0 mt-0.5"
+          />
+          <span className="font-semibold break-words min-w-0">
             AWS Bedrock LLMs • Verifiable Zero-Data Retention
           </span>
         </div>
@@ -71,11 +74,11 @@ const FEATURES: Feature[] = [
       "Inspect original versus masked outputs in real-time with granular diff overlays, confidence scores, and instant reversible redactions with single-click manual overrides.",
     footer: (
       <div className="pt-4 flex flex-col gap-2">
-        <div className="flex justify-between font-label-sm text-label-sm">
+        <div className="flex justify-between gap-2 font-label-sm text-label-sm">
           <span className="text-on-surface-variant">
             Redaction Certainty Score
           </span>
-          <span className="text-primary font-bold">99.85%</span>
+          <span className="text-primary font-bold shrink-0">99.85%</span>
         </div>
         <div className="w-full h-2 rounded-full bg-surface-container overflow-hidden">
           <div className="h-full bg-gradient-to-r from-secondary-fixed via-primary to-primary-container w-[99.8%]" />
@@ -114,29 +117,32 @@ const FEATURES: Feature[] = [
 
 export default function FeaturesGrid() {
   return (
-    <section id="features" className="w-full py-16 px-10 scroll-mt-24">
+    <section
+      id="features"
+      className="w-full py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-10 scroll-mt-24"
+    >
       <SectionHeading
         eyebrow="Enterprise Architectural Modules"
         title="Engineered for Zero-Trust Auditing"
         description="Complete operational oversight for high-velocity compliance teams, risk officers, and DevOps data pipelines."
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
         {FEATURES.map((f) => (
           <div
             key={f.title}
-            className="bg-surface-container-lowest/90 backdrop-blur-md rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between"
+            className="min-w-0 bg-surface-container-lowest/90 backdrop-blur-md rounded-2xl p-5 sm:p-6 lg:p-8 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between"
           >
             <div>
               <div
-                className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${f.iconBg} ${f.iconColor}`}
+                className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-4 sm:mb-6 ${f.iconBg} ${f.iconColor}`}
               >
-                <Icon name={f.icon} className="text-[24px]" />
+                <Icon name={f.icon} className="text-[22px] sm:text-[24px]" />
               </div>
-              <h3 className="font-headline-md text-headline-md text-on-surface font-bold mb-3">
+              <h3 className="font-headline-md text-headline-md text-on-surface font-bold mb-3 break-words">
                 {f.title}
               </h3>
-              <p className="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+              <p className="font-body-md text-body-md text-on-surface-variant mb-4 sm:mb-6 leading-relaxed">
                 {f.description}
               </p>
             </div>

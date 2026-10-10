@@ -11,10 +11,10 @@ const NAV_SECTIONS: NavSection[] = [
   {
     title: "Overview",
     items: [
-      { label: "Dashboard", href: "/dashboard", icon: "grid_view" },
+      { label: "Dashboard", href: "/admin/dashboard", icon: "grid_view" },
       {
         label: "Upload & Scan",
-        href: "/dashboard/upload",
+        href: "/admin/uploads",
         icon: "upload_file",
       },
     ],
@@ -24,17 +24,17 @@ const NAV_SECTIONS: NavSection[] = [
     items: [
       {
         label: "Compliance Audit",
-        href: "/dashboard/compliance-audit",
+        href: "/admin/compliance-audit",
         icon: "verified_user",
       },
       {
         label: "Privacy Policy & Guardrails",
-        href: "/dashboard/guardrails",
+        href: "/admin/policy-guardrails",
         icon: "shield_lock",
       },
       {
         label: "Audit History Logs",
-        href: "/dashboard/audit-logs",
+        href: "/admin/audit-logs",
         icon: "receipt_long",
       },
     ],
@@ -44,12 +44,12 @@ const NAV_SECTIONS: NavSection[] = [
     items: [
       {
         label: "Manage Users & Roles",
-        href: "/dashboard/users",
+        href: "/admin/manageusers",
         icon: "group",
       },
       {
         label: "Add Users",
-        href: "/dashboard/users",
+        href: "/admin/addusers",
         icon: "man",
       },
     ],
@@ -59,11 +59,11 @@ const NAV_SECTIONS: NavSection[] = [
     items: [
       {
         label: "Cloud Integrations",
-        href: "/dashboard/integrations",
+        href: "/admin/integrations",
         icon: "hub",
       },
-      { label: "Settings", href: "/dashboard/settings", icon: "settings" },
-      { label: "Profile", href: "/dashboard/profile", icon: "account_circle" },
+      { label: "Settings", href: "/admin/settings", icon: "settings" },
+      { label: "Profile", href: "/admin/profile", icon: "account_circle" },
     ],
   },
 ];

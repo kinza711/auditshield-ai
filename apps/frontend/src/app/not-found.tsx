@@ -6,17 +6,21 @@ import {
   Search,
   Shield,
 } from "lucide-react";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
 export default function NotFound() {
   return (
-    <div className="relative flex min-h-dvh flex-col justify-between overflow-hidden bg-background font-body text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <div className="relative flex min-h-dvh flex-col overflow-x-clip bg-background font-body text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
       {/* Ambient Glow */}
       <div className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[300px] w-full max-w-5xl -translate-x-1/2 bg-gradient-to-b from-secondary-fixed/40 via-transparent to-transparent blur-3xl sm:h-[420px]" />
 
-      <div className="pointer-events-none absolute left-1/2 top-16 -z-10 h-[240px] w-[240px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-primary-fixed/60 to-transparent blur-2xl sm:top-24 sm:h-[340px] sm:w-[340px]" />
+      <div className="pointer-events-none absolute left-1/2 top-24 -z-10 h-[240px] w-[240px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-primary-fixed/60 to-transparent blur-2xl sm:top-32 sm:h-[340px] sm:w-[340px]" />
 
-      {/* Main */}
-      <main className="flex flex-1 flex-col items-center justify-center px-4 py-8 sm:px-6 sm:py-12 md:py-16">
+      <Header />
+
+      {/* Main: top padding clears the fixed header (h-16 / sm:h-20) */}
+      <main className="flex flex-1 flex-col items-center justify-center px-4 pb-8 pt-24 sm:px-6 sm:pb-12 sm:pt-28 md:pb-16 md:pt-32">
         <div className="mx-auto flex w-full max-w-xl flex-col items-center text-center">
           {/* Shield Icon */}
           <div className="relative mb-5 sm:mb-6">
@@ -41,7 +45,7 @@ export default function NotFound() {
           </div>
 
           {/* Heading */}
-          <h1 className="mb-3 font-display text-xl font-bold tracking-tight text-on-surface break-words sm:text-2xl md:text-3xl">
+          <h1 className="mb-3 break-words font-display text-xl font-bold tracking-tight text-on-surface sm:text-2xl md:text-3xl">
             Resource not found
           </h1>
 
@@ -77,7 +81,6 @@ export default function NotFound() {
 
           {/* Primary Actions */}
           <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center">
-            {/* Dashboard */}
             <Link
               href="/"
               className="inline-flex h-11 w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-primary px-6 text-sm font-semibold text-on-primary shadow-sm transition-all hover:bg-primary-container hover:shadow-md hover:shadow-primary/20 sm:w-auto"
@@ -86,7 +89,6 @@ export default function NotFound() {
               <span>Return to Dashboard</span>
             </Link>
 
-            {/* Audit Logs */}
             <Link
               href="/audit-logs"
               className="inline-flex h-11 w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-outline-variant/50 bg-surface px-5 text-sm font-medium text-on-surface-variant shadow-sm transition-all hover:bg-surface-container hover:text-on-surface sm:w-auto"
@@ -108,6 +110,8 @@ export default function NotFound() {
           </div>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }

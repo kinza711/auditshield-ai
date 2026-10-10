@@ -1,0 +1,170 @@
+import type {
+  ControlItem,
+  GuardrailRule,
+  RegulatoryPreset,
+} from "../types/guardrail";
+
+export const TOTAL_RULES = 18;
+
+export const GUARDRAIL_RULES: GuardrailRule[] = [
+  {
+    id: "ssn",
+    title: "National ID / SSN / CNIC",
+    ruleCode: "RULE-US-SSN-092 • High Sensitivity",
+    category: "pii",
+    mode: "masking",
+    enabled: true,
+    icon: "badge",
+    iconWrapClass: "bg-primary-fixed/60",
+    iconClass: "text-primary",
+    engine: "NER Transformer + RegEx",
+    engineDetail: "RoBERTa-PII-v2 • Conf > 92%",
+    strategyIcon: "visibility_off",
+    strategyLabel: "Full Masking: [REDACTED_SSN]",
+    strategyClass: "bg-secondary-fixed/60 text-on-secondary-fixed-variant",
+    enforcementLabel: "Strict Block & Quarantine",
+    enforcementClass: "bg-primary-fixed text-primary",
+    enforcementDotClass: "bg-primary",
+  },
+  {
+    id: "pan",
+    title: "Payment Cards & IBAN",
+    ruleCode: "RULE-FIN-PAN-401 • PCI-DSS v4.0",
+    category: "financial",
+    mode: "token",
+    enabled: true,
+    icon: "credit_card",
+    iconWrapClass: "bg-secondary-fixed",
+    iconClass: "text-secondary",
+    engine: "Luhn Algorithm + Checksum",
+    engineDetail: "ISO/IEC 7812 Verification Engine",
+    strategyIcon: "token",
+    strategyLabel: "Deterministic Tokenization",
+    strategyClass: "bg-surface-container text-on-surface",
+    enforcementLabel: "Auto-Tokenize & Pass",
+    enforcementClass: "bg-surface-container text-on-surface",
+    enforcementDotClass: "bg-emerald-500",
+  },
+  {
+    id: "mrn",
+    title: "Medical Record Numbers (MRN)",
+    ruleCode: "RULE-HLT-MRN-018 • HIPAA Title II",
+    category: "health",
+    mode: "masking",
+    enabled: true,
+    icon: "medical_services",
+    iconWrapClass: "bg-tertiary-fixed",
+    iconClass: "text-tertiary",
+    engine: "Bedrock Med-Scanner NLP",
+    engineDetail: "Context-Aware Clinical Entity Model",
+    strategyIcon: "key",
+    strategyLabel: "Format-Preserving Encryption",
+    strategyClass: "bg-secondary-fixed/60 text-on-secondary-fixed-variant",
+    enforcementLabel: "Flag for Auditor Review",
+    enforcementClass: "bg-secondary-fixed text-on-secondary-fixed-variant",
+    enforcementDotClass: "bg-secondary",
+  },
+  {
+    id: "keys",
+    title: "API Keys & Private SSH Keys",
+    ruleCode: "RULE-SEC-KEY-772 • SOC2 & ISO27001",
+    category: "secrets",
+    mode: "blocking",
+    enabled: true,
+    icon: "lock_reset",
+    iconWrapClass: "bg-error-container",
+    iconClass: "text-error",
+    engine: "Entropy & Pattern Signature",
+    engineDetail: "AWS, OpenAI, GitHub, RSA PEM",
+    strategyIcon: "block",
+    strategyLabel: "Instant Hard Zeroization",
+    strategyClass: "bg-primary-fixed text-primary",
+    enforcementLabel: "Strict Block & Quarantine",
+    enforcementClass: "bg-primary-fixed text-primary",
+    enforcementDotClass: "bg-primary",
+  },
+  {
+    id: "names",
+    title: "Individual / Patient Full Names",
+    ruleCode: "RULE-PII-NAME-210 • Global Standard",
+    category: "pii",
+    mode: "hashing",
+    enabled: true,
+    icon: "person_search",
+    iconWrapClass: "bg-surface-container",
+    iconClass: "text-secondary",
+    engine: "Statistical NER + Gazetteers",
+    engineDetail: "Multilingual Entity Recognizer",
+    strategyIcon: "tag",
+    strategyLabel: "Hash SHA-256 (Salted)",
+    strategyClass: "bg-secondary-fixed/60 text-on-secondary-fixed-variant",
+    enforcementLabel: "Auto-Mask & Pass",
+    enforcementClass: "bg-surface-container text-on-surface",
+    enforcementDotClass: "bg-emerald-500",
+  },
+];
+
+export const REGULATORY_PRESETS: RegulatoryPreset[] = [
+  {
+    id: "hipaa",
+    name: "HIPAA Safe Harbor",
+    description:
+      "18 Protected Identifiers with complete scrub & fuzzy date offsetting.",
+    version: "v2.4 • Sync 1h ago",
+    status: "active",
+  },
+  {
+    id: "gdpr",
+    name: "GDPR Article 17",
+    description:
+      "Right to Be Forgotten: salted irreversible SHA-256 pseudonymization.",
+    version: "v3.1 • Sync 3h ago",
+    status: "active",
+  },
+  {
+    id: "pci",
+    name: "PCI-DSS v4.0",
+    description:
+      "Primary Account Number (PAN), CVV/CVC & mag-stripe vault tokens.",
+    version: "v4.0 • Sync 10m ago",
+    status: "active",
+  },
+  {
+    id: "ccpa",
+    name: "CCPA / CPRA 2024",
+    description:
+      "California Consumer Privacy: geo-tag precision clamp & biometric redaction.",
+    version: "v1.9 • Sync 6h ago",
+    status: "active",
+  },
+  {
+    id: "financials",
+    name: "Custom Financials",
+    description:
+      "Proprietary ledger records & SWIFT MT103 wire memo guardrails.",
+    version: "Draft v0.9",
+    status: "standby",
+  },
+];
+
+export const CONTROL_ITEMS: ControlItem[] = [
+  {
+    id: "zeroization",
+    icon: "memory",
+    iconClass: "text-secondary",
+    title: "Memory Zeroization Policy",
+    description: "Post-execution RAM overwrite (DoD 5220.22-M)",
+    badge: "Enforced",
+  },
+  {
+    id: "fail-closed",
+    icon: "emergency_home",
+    iconClass: "text-primary",
+    title: "Fail-Closed Emergency Mode",
+    description: "Drop stream if policy latency exceeds 100ms",
+    badge: "Active",
+  },
+];
+
+export const DEFAULT_PAYLOAD =
+  "Patient Eleanor Vance (SSN: 489-02-1849) submitted insurance claim with Visa Card 4532-8921-9012-3841 for hospital billing. Authorization key: AKIAIOSFODNN7EXAMPLE.";
